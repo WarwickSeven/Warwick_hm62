@@ -6,20 +6,20 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-void iniArray()
+const size_t m = 4;
+const size_t n = 4;
+
+int iniArray(int **ptrArr)
 {
-    int** ptrArr;
-    const size_t m = 4;
-    const size_t n = 4;
-         
     ptrArr = new int * [m];
          for (size_t i = 0; i < m; i++)
          {
              ptrArr[i] = new int[n];
          }
+    return **ptrArr;
 };
 
-void randomArray(int** ptrArr, size_t m, size_t n)
+void randomArray(int** ptrArr)
 {
     srand(static_cast<unsigned int>(time(0)));
     for (size_t i = 0; i < m; i++)
@@ -31,7 +31,7 @@ void randomArray(int** ptrArr, size_t m, size_t n)
     }
 };
 
-void printArray(int** ptrArr, size_t m, size_t n)
+void printArray(int** ptrArr)
 {
     for (size_t i = 0; i < m; i++)
     {
@@ -43,7 +43,7 @@ void printArray(int** ptrArr, size_t m, size_t n)
     }
 };
 
-void clearMemory(int** ptrArr, size_t m)
+void clearMemory(int** ptrArr)
 {
     for (size_t i = 0; i < m; i++)
     {
@@ -55,10 +55,11 @@ void clearMemory(int** ptrArr, size_t m)
 
 int main()
 {
-    iniArray();
-    randomArray();
-    printArray();
-    clearMemory();
+    int** ptrArr;
+    iniArray(ptrArr);
+    randomArray(ptrArr);
+    printArray(ptrArr);
+    clearMemory(ptrArr);
     
     return 0;
 }
